@@ -1,16 +1,7 @@
 
 import { useState } from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Menu,
-  X,
-  ArrowUpRight,
-  Code,
-  GraduationCap,
-  MapPin
-} from "lucide-react";
+import { Mail, Menu, X, ArrowUpRight, Code, GraduationCap, MapPin } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
