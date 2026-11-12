@@ -274,7 +274,8 @@ function App() {
               <BriefcaseBusiness size={25} />
               <div>
                 <span>Career Interest</span>
-                <h3>Software Development</h3>
+                <h3>Web Development</h3>
+                <h3>Database Designer</h3>
               </div>
             </div>
 
