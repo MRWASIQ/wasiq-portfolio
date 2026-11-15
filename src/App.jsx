@@ -193,7 +193,7 @@ function App() {
 
           <div className="image-border">
             <img
-              src="/profile.jpg"
+              src="/profile.jpeg"
               alt="Wasiq Ali"
             />
           </div>
