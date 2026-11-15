@@ -1,4 +1,5 @@
-    import { useState } from "react";
+import { useState } from "react";
+
 import {
   Mail,
   Menu,
@@ -8,7 +9,12 @@ import {
   GraduationCap,
   MapPin,
   BriefcaseBusiness,
-  Sparkles
+  Database,
+  Globe,
+  ExternalLink,
+  Sparkles,
+  Award,
+  Monitor
 } from "lucide-react";
 
 import {
@@ -16,8 +22,20 @@ import {
   FaLinkedin as Linkedin
 } from "react-icons/fa";
 
+import "./App.css";
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigation = [
+    "Home",
+    "About",
+    "Skills",
+    "Experience",
+    "Projects",
+    "Education",
+    "Contact"
+  ];
 
   const skills = [
     "Java",
@@ -27,8 +45,8 @@ function App() {
     "CSS3",
     "SQL",
     "Python",
-    "Web Development",
-    "Problem Solving"
+    "Database Development",
+    "Web Development"
   ];
 
   const projects = [
@@ -36,24 +54,24 @@ function App() {
       number: "01",
       title: "Student Education Fellowship Platform",
       description:
-        "A platform designed to connect students and alumni through an educational fellowship support system.",
+        "A platform connecting students and alumni through an educational fellowship support system. Currently developing this project as my Final Year Project.",
       tech: ["React.js", "Web Development", "Database"],
-      status: "Currently Working",
+      status: "In Progress",
       featured: true
     },
     {
       number: "02",
       title: "Travel Agency Website",
       description:
-        "A responsive travel agency website designed to present travel services and destinations.",
-      tech: ["HTML", "CSS"],
+        "A responsive travel agency website designed to showcase travel services, destinations and essential information.",
+      tech: ["HTML5", "CSS3"],
       status: "Completed"
     },
     {
       number: "03",
       title: "Student Hostel Management System",
       description:
-        "A management system developed to organize hostel operations and maintain student records.",
+        "An academic management system designed to organize hostel operations and maintain student records.",
       tech: ["Java", "Database"],
       status: "Completed"
     },
@@ -61,7 +79,7 @@ function App() {
       number: "04",
       title: "Health Management System",
       description:
-        "A Java-based academic application demonstrating file handling and basic data management.",
+        "A Java-based academic application demonstrating file handling and basic information management.",
       tech: ["Java", "File Handling"],
       status: "Completed"
     },
@@ -69,153 +87,172 @@ function App() {
       number: "05",
       title: "Process Scheduling System",
       description:
-        "A priority-based process scheduling application developed using linked list concepts.",
+        "A process scheduling application developed to demonstrate priority-based scheduling and data structures.",
       tech: ["Java", "Data Structures"],
       status: "Completed"
     }
   ];
 
-  const navigation = [
-    "Home",
-    "About",
-    "Skills",
-    "Projects",
-    "Education",
-    "Contact"
-  ];
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <div className="website">
 
       {/* NAVBAR */}
       <nav className="navbar">
-        <a href="#home" className="logo">
-          WA<span>.</span>
-        </a>
+        <div className="nav-container">
 
-        <button
-          className="menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
-        >
-          {menuOpen ? <X /> : <Menu />}
-        </button>
+          <a href="#home" className="logo">
+            WA<span>.</span>
+          </a>
 
-        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-          {navigation.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
+          <button
+            className="menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation"
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
+
+          <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+            {navigation.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={closeMenu}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+
+          <a href="#contact" className="nav-contact">
+            Let's Talk <ArrowUpRight size={16} />
+          </a>
+
         </div>
-
-        <a href="#contact" className="nav-contact">
-          Let's Talk <ArrowUpRight size={16} />
-        </a>
       </nav>
 
       {/* HOME */}
       <section className="hero section" id="home">
 
-        <div className="hero-content">
+        <div className="hero-container">
 
-          <div className="availability">
-            <span className="availability-dot"></span>
-            Open to Internship Opportunities
-          </div>
+          <div className="hero-content">
 
-          <p className="small-heading">
-            WELCOME TO MY PORTFOLIO
-          </p>
-
-          <h1>
-            Hi, I'm <span>Wasiq Ali.</span>
-          </h1>
-
-          <h2>
-            Computer Science Student
-          </h2>
-
-          <p className="description">
-            I am a 7th-semester BS Computer Science student
-            passionate about software development, web technologies,
-            and building practical digital solutions.
-            Currently learning React.js and improving my development skills.
-          </p>
-
-          <div className="hero-buttons">
-            <a href="#projects" className="primary-btn">
-              Explore My Work
-              <ArrowUpRight size={18} />
-            </a>
-
-            <a href="#contact" className="secondary-btn">
-              Contact Me
-            </a>
-          </div>
-
-          <div className="hero-info">
-            <div className="location">
-              <MapPin size={17} />
-              Rawalpindi, Pakistan
+            <div className="availability">
+              <span className="availability-dot"></span>
+              Open to Internship Opportunities
             </div>
 
-            <div className="hero-socials">
-              <a
-                href="https://github.com/MRWASIQ"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
-                <Github />
+            <p className="small-heading">
+              HELLO, I'M
+            </p>
+
+            <h1>
+              Wasiq <span>Ali.</span>
+            </h1>
+
+            <h2>
+              Computer Science Student
+            </h2>
+
+            <p className="hero-focus">
+              Web Development <span>|</span> Database Development
+            </p>
+
+            <p className="description">
+              I am a 7th-semester BS Computer Science student
+              interested in building responsive web applications
+              and working with databases. I enjoy learning new
+              technologies and developing practical digital solutions.
+            </p>
+
+            <div className="hero-buttons">
+
+              <a href="#projects" className="primary-btn">
+                Explore My Work
+                <ArrowUpRight size={18} />
               </a>
 
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin />
+              <a href="#contact" className="secondary-btn">
+                Contact Me
               </a>
+
             </div>
+
+            <div className="hero-info">
+
+              <div className="location">
+                <MapPin size={17} />
+                Rawalpindi, Pakistan
+              </div>
+
+              <div className="hero-socials">
+
+                <a
+                  href="https://github.com/MRWASIQ"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin />
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="hero-image">
+
+            <div className="image-glow"></div>
+
+            <div className="image-border">
+              <img
+                src="/profile.jpeg"
+                alt="Wasiq Ali"
+              />
+            </div>
+
+            <div className="image-tag">
+              <Code2 size={21} />
+              <div>
+                <strong>Web Developer</strong>
+                <span>Learning & Building</span>
+              </div>
+            </div>
+
+            <div className="floating-icon">
+              <Sparkles size={22} />
+            </div>
+
           </div>
 
         </div>
 
-        <div className="hero-image">
-
-          <div className="image-glow"></div>
-
-          <div className="image-border">
-            <img
-              src="/profile.jpeg"
-              alt="Wasiq Ali"
-            />
-          </div>
-
-          <div className="image-tag">
-            <Code2 size={19} />
-            <div>
-              <strong>React.js</strong>
-              <span>Currently Learning</span>
-            </div>
-          </div>
-
-          <div className="floating-icon">
-            <Sparkles size={22} />
-          </div>
-
+        <div className="hero-bottom">
+          <span>01</span>
+          <div></div>
+          <span>SCROLL TO EXPLORE</span>
         </div>
 
       </section>
 
       {/* ABOUT */}
-      <section className="section" id="about">
+      <section className="section about-section" id="about">
 
         <div className="section-title">
           <p>GET TO KNOW ME</p>
@@ -228,8 +265,9 @@ function App() {
         <div className="about-layout">
 
           <div className="about-card">
+
             <div className="about-icon">
-              <Code2 size={25} />
+              <Code2 size={27} />
             </div>
 
             <h3>My Introduction</h3>
@@ -240,30 +278,30 @@ function App() {
             </p>
 
             <p>
-              I have academic and practical experience in Java,
-              HTML, CSS, SQL, Python, and web development.
-              Currently, I am learning React.js to strengthen
-              my frontend development skills.
+              My main interests are Web Development and Database
+              Development. I have worked with Java, JavaScript,
+              React.js, HTML, CSS, SQL and Python through academic
+              coursework and practical projects.
             </p>
 
             <p>
-              I am also developing my Final Year Project,
+              Currently, I am developing my Final Year Project,
               <strong> Student Education Fellowship Platform</strong>,
-              which focuses on connecting students and alumni
-              through an educational fellowship support system.
+              which aims to connect students and alumni through
+              an educational fellowship support system.
             </p>
 
             <p>
-              My goal is to gain practical experience, keep learning
-              modern technologies, and grow as a professional
-              software developer.
+              I enjoy improving my technical skills, solving
+              programming problems and building useful applications.
             </p>
+
           </div>
 
           <div className="about-side">
 
             <div className="info-card">
-              <GraduationCap size={25} />
+              <GraduationCap size={27} />
               <div>
                 <span>Education</span>
                 <h3>BS Computer Science</h3>
@@ -271,16 +309,23 @@ function App() {
             </div>
 
             <div className="info-card">
-              <BriefcaseBusiness size={25} />
+              <Globe size={27} />
               <div>
                 <span>Career Interest</span>
                 <h3>Web Development</h3>
-                <h3>Database Designer</h3>
               </div>
             </div>
 
             <div className="info-card">
-              <Code2 size={25} />
+              <Database size={27} />
+              <div>
+                <span>Career Interest</span>
+                <h3>Database Development</h3>
+              </div>
+            </div>
+
+            <div className="info-card">
+              <Code2 size={27} />
               <div>
                 <span>Currently Learning</span>
                 <h3>React.js Development</h3>
@@ -294,10 +339,10 @@ function App() {
       </section>
 
       {/* SKILLS */}
-      <section className="section" id="skills">
+      <section className="section skills-section" id="skills">
 
         <div className="section-title">
-          <p>WHAT I WORK WITH</p>
+          <p>MY TECHNICAL EXPERTISE</p>
           <h2>
             Technical <span>Skills</span>
           </h2>
@@ -306,7 +351,7 @@ function App() {
 
         <p className="section-description">
           Technologies and skills I have explored through
-          coursework, practice, and academic projects.
+          coursework, practical experience and academic projects.
         </p>
 
         <div className="skills-grid">
@@ -315,12 +360,20 @@ function App() {
             <div className="skill-card" key={skill}>
 
               <div className="skill-icon">
-                <Code2 size={23} />
+                {index === 5 || index === 7 ? (
+                  <Database size={24} />
+                ) : index === 2 || index === 3 || index === 4 ? (
+                  <Globe size={24} />
+                ) : (
+                  <Code2 size={24} />
+                )}
               </div>
 
               <h3>{skill}</h3>
 
-              <span>0{index + 1}</span>
+              <span>
+                {String(index + 1).padStart(2, "0")}
+              </span>
 
             </div>
           ))}
@@ -329,11 +382,68 @@ function App() {
 
       </section>
 
-      {/* PROJECTS */}
-      <section className="section" id="projects">
+      {/* EXPERIENCE */}
+      <section className="section experience-section" id="experience">
 
         <div className="section-title">
-          <p>MY RECENT WORK</p>
+          <p>MY PROFESSIONAL JOURNEY</p>
+          <h2>
+            Experience <span>& Training</span>
+          </h2>
+          <div className="title-line"></div>
+        </div>
+
+        <div className="experience-card">
+
+          <div className="experience-icon">
+            <BriefcaseBusiness size={28} />
+          </div>
+
+          <div className="experience-content">
+
+            <div className="experience-heading">
+              <div>
+                <span className="experience-label">
+                  INTERNSHIP
+                </span>
+                <h3>Full Stack Web Development Intern</h3>
+                <h4>Datheon</h4>
+              </div>
+
+              <span className="experience-status">
+                Completed
+              </span>
+            </div>
+
+            <p>
+              Completed a four-week remote internship focused on
+              practical web development. Worked on projects involving
+              portfolio development, task management, weather
+              dashboards and e-commerce functionality.
+            </p>
+
+            <div className="experience-tags">
+              <span>Web Development</span>
+              <span>Frontend Development</span>
+              <span>Practical Projects</span>
+            </div>
+
+            <div className="certificate-note">
+              <Award size={18} />
+              Internship Certificate Completed
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* PROJECTS */}
+      <section className="section projects-section" id="projects">
+
+        <div className="section-title">
+          <p>MY SELECTED WORK</p>
           <h2>
             Featured <span>Projects</span>
           </h2>
@@ -341,15 +451,17 @@ function App() {
         </div>
 
         <p className="section-description">
-          A selection of academic and practical projects
-          I have worked on during my learning journey.
+          A collection of academic and practical projects
+          developed during my learning journey.
         </p>
 
         <div className="projects-grid">
 
           {projects.map((project) => (
             <div
-              className={`project-card ${project.featured ? "featured-project" : ""}`}
+              className={`project-card ${
+                project.featured ? "featured-project" : ""
+              }`}
               key={project.number}
             >
 
@@ -358,7 +470,11 @@ function App() {
                   PROJECT {project.number}
                 </span>
 
-                <ArrowUpRight size={21} />
+                <ExternalLink size={20} />
+              </div>
+
+              <div className="project-icon">
+                <Monitor size={25} />
               </div>
 
               <h3>{project.title}</h3>
@@ -388,7 +504,7 @@ function App() {
       </section>
 
       {/* EDUCATION */}
-      <section className="section" id="education">
+      <section className="section education-section" id="education">
 
         <div className="section-title">
           <p>MY ACADEMIC JOURNEY</p>
@@ -405,6 +521,7 @@ function App() {
           </div>
 
           <div className="education-content">
+
             <span className="education-label">
               CURRENTLY STUDYING
             </span>
@@ -421,6 +538,7 @@ function App() {
               <span>7th Semester</span>
               <span>Undergraduate Degree</span>
             </div>
+
           </div>
 
         </div>
@@ -440,10 +558,11 @@ function App() {
             <div className="title-line"></div>
           </div>
 
-          <p>
+          <p className="contact-description">
             I am interested in internship opportunities,
-            learning experiences, and connecting with
-            developers and technology professionals.
+            practical learning experiences and connecting
+            with professionals in web and database development.
+            Feel free to get in touch.
           </p>
 
           <a
@@ -501,4 +620,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
